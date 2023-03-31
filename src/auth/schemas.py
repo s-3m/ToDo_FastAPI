@@ -9,6 +9,9 @@ class UserRead(schemas.BaseUser[uuid.UUID]):
     first_name: str
     last_name: str
 
+    class Config:
+        orm_mode = True
+
 
 class UserCreate(schemas.BaseUserCreate):
     login: str

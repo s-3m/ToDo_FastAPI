@@ -10,6 +10,7 @@ from src.auth.models import User
 from src.auth.manager import get_user_manager
 from src.auth.config import auth_backend, BasicAuthBackend
 from src.auth.schemas import UserRead, UserCreate
+from src.task.router import task_router
 
 
 fastapi_users = FastAPIUsers[User, uuid.UUID](
@@ -36,6 +37,7 @@ app.include_router(
     prefix="/auth",
     tags=["auth"],
 )
+app.include_router(task_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", reload=True)
